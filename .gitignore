@@ -1,0 +1,39 @@
+# Ignoruj pliki generowane przez Visual Studio
+bin/
+obj/
+.vs/
+
+# Ignoruj pliki projektu Visual Studio
+*.sln
+*.vcxproj
+*.vcxproj.filters
+*.pdb
+*.user
+
+# Ignoruj pliki testów jednostkowych Visual Studio
+*.TestResult
+
+# Ignoruj pliki wynikowe generowane przez Resharper
+_ReSharper*/
+*.ReSharper*/
+
+# Ignoruj pliki wynikowe generowane przez Code Coverage
+*.coverage
+.coverage
+
+# Ignoruj pliki konfiguracyjne
+*.config
+
+# Ignoruj pliki wynikowe aplikacji
+*.exe
+*.dll
+*.userprefs
+*.dbmdl
+*.dbproj
+*.publishsettings
+
+# Ignoruj pliki wynikowe wersjonowania
+*.cache
+*.log
+*.vspscc
+*.vssscc

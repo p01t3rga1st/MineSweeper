@@ -74,6 +74,7 @@ MinesweeperBoard::MinesweeperBoard(int width, int height, GameMode mode): height
 
   this->width = width;
    
+   alreadyMoved = false;
 
    MinesweeperBoard::clearBoard(width, height);
 
@@ -283,7 +284,73 @@ char MinesweeperBoard::getFieldInfo(int row, int col) const
    return countMines(row, col);
 }
 
+void MinesweeperBoard::die()
+{
+   current_game_state = FINISHED_LOSS;
+}
+
 int MinesweeperBoard::getGameState() const 
 {
    return current_game_state;
+}
+
+void MinesweeperBoard::revealField(int row, int col)
+{
+   const Field & field = board[row][col];
+   
+   if(field.isRevealed)
+   {
+      return;
+   }
+
+   if(row < 0 || row >= height || col < 0 || col >= width)
+   {
+      return;
+   }
+
+   if(getGameState() != RUNNING)
+   {
+      return;
+   }
+
+   if(field.hasFlag)
+   {
+      return;
+   }
+
+   if(!field.isRevealed)
+   {
+      field.isRevealed;
+      alreadyMoved = true;
+   }
+
+   if(field.hasMine)
+   {
+      if(alreadyMoved == true || current_game_mode == DEBUG)
+      {
+         die();
+      }
+      else
+      {
+         mines_num = 1;
+         while(mines_num > 0)
+         {
+            int x = rand() % width;
+            int y = rand() % height;
+            if (!board[x][y].hasMine) 
+            {
+               board[x][y].hasMine = true;
+               mines_num--;
+            }
+         }
+      }
+   }
+
+
+   // try to reveal the field at (row,col)
+  //
+  // If the field was not revealed and there is no mine on it - reveal it
+  // If the field was not revealed and there is a mine on it:  
+  // - if its the first player action - move mine to another location, reveal field (not in DEBUG mode!)
+  // - reveal it and finish game
 }
