@@ -10,8 +10,8 @@ int main() {
     std::cout<< "done" << std::endl;
     
 
-    board.revealField( 1, 1);
-    char symbol = board.getFieldInfo( 1, 1);
+    board.revealField( 1, 0);
+    char symbol = board.getFieldInfo( 1, 0);
     std::cout << symbol << std::endl;
 
     return 0;
