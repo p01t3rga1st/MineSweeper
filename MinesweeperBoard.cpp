@@ -33,15 +33,15 @@ void MinesweeperBoard::debug_display() const
       for (int j = 0; j < width; j++) 
       {
          std::cout << "[";
-         if (board[i][j].hasMine)
+         if (board[i][j].hasMine == true && board[i][j].isRevealed == true)
             std::cout << "M";
          else
             std::cout << ".";
-         if (board[i][j].isRevealed)
+         if (board[i][j].isRevealed == true && board[i][j].hasMine == false)
             std::cout << "o";
          else
             std::cout << ".";
-         if (board[i][j].hasFlag)
+         if (board[i][j].hasFlag == true)
             std::cout << "f";
          else
             std::cout << ".";
@@ -50,6 +50,61 @@ void MinesweeperBoard::debug_display() const
       std::cout << std::endl;
    }
 }
+
+void debug_play() 
+{
+   int menu_gamemode;
+   int menu_height;
+   int menu_width;
+
+   std::cout << "LESS THAN 100! Height:" << std::endl;
+   std::cin >> menu_height;
+
+   std::cout << "LESS THAN 100! Width:" << std::endl;
+   std::cin >> menu_width;
+
+   std::cout << std::endl;
+   std::cout << std::endl;
+   std::cout << std::endl;
+
+   std::cout << "Gamemode:" << std::endl;
+   std::cout << "Easy: '1'" << std::endl;
+   std::cout << "Normal: '2'" << std::endl;
+   std::cout << "Hard: '3'" << std::endl;
+   std::cout << "Debug: '4'" << std::endl;
+
+   std::cin >> menu_gamemode;
+
+   
+
+
+   switch(menu_gamemode)
+   {
+      case 1:
+      {
+         MinesweeperBoard board(menu_width, menu_height, EASY);
+      }
+         break;
+      case 2:
+      {
+         MinesweeperBoard board(menu_width, menu_height, NORMAL);
+      }   
+         break;
+      case 3:
+      {
+         MinesweeperBoard board(menu_width, menu_height, HARD);
+      }
+         break;
+      case 4:
+      {
+         MinesweeperBoard board(menu_width, menu_height, DEBUG);
+      }
+         break;
+   }
+   
+   debug_display();
+}
+
 
 void MinesweeperBoard::clearBoard(int width, int height) 
 {
@@ -75,6 +130,7 @@ MinesweeperBoard::MinesweeperBoard(int width, int height, GameMode mode): height
   this->width = width;
    
    alreadyMoved = false;
+   current_game_state = RUNNING;
 
    MinesweeperBoard::clearBoard(width, height);
 
@@ -266,7 +322,7 @@ char MinesweeperBoard::getFieldInfo(int row, int col) const
    }
 
    // Sprawdzenie czy pole nie jest odkryte
-   if (!field.isRevealed) {
+   if (field.isRevealed) {
       return '_';
    }
 
@@ -320,7 +376,7 @@ void MinesweeperBoard::revealField(int row, int col)
 
    if(!field.isRevealed)
    {
-      field.isRevealed;
+      board[row][col].isRevealed = true;
       alreadyMoved = true;
    }
 
@@ -329,6 +385,7 @@ void MinesweeperBoard::revealField(int row, int col)
       if(alreadyMoved == true || current_game_mode == DEBUG)
       {
          die();
+         std::cout << "You died" << std::endl;
       }
       else
       {
@@ -346,6 +403,7 @@ void MinesweeperBoard::revealField(int row, int col)
       }
    }
 
+   
 
    // try to reveal the field at (row,col)
   //

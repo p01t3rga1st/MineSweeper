@@ -11,6 +11,7 @@ struct Field
 
 enum GameMode {DEBUG, EASY, NORMAL, HARD};
 enum GameState {RUNNING, FINISHED_WIN, FINISHED_LOSS};
+void debug_play();
 
 
 class MinesweeperBoard 
