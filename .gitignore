@@ -37,3 +37,7 @@ _ReSharper*/
 *.log
 *.vspscc
 *.vssscc
+
+# Ignoruj piki makefile
+
+*.o
