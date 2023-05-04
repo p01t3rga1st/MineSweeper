@@ -5,6 +5,7 @@
 
 int main() 
 {
-    debug_play();
+    MinesweeperBoard board(10, 10, DEBUG);
+    board.debug_display();
     return 0;
 };

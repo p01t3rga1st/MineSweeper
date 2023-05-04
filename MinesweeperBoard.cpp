@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cstdlib>
 #include <string>
+
 #include "MinesweeperBoard.h"
 
 
@@ -51,8 +52,11 @@ void MinesweeperBoard::debug_display() const
    }
 }
 
+/*
 void debug_play() 
 {
+   
+
    int menu_gamemode;
    int menu_height;
    int menu_width;
@@ -101,9 +105,8 @@ void debug_play()
       }
          break;
    }
-   
-   debug_display();
-}
+
+} */
 
 
 void MinesweeperBoard::clearBoard(int width, int height) 
