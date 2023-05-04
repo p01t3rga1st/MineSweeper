@@ -14,7 +14,7 @@ main.o: main.cpp MinesweeperBoard.h
 	$(CC) $(CFLAGS) -c main.cpp
 
 MinesweeperBoard.o: MinesweeperBoard.cpp MinesweeperBoard.h
-	$(CC) $(CFLAGS) -c MinesweeperBoard.cppgcc
+	$(CC) $(CFLAGS) -c MinesweeperBoard.cpp
 
 clean:
 	rm -f $(OBJS) $(EXEC)
