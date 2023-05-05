@@ -148,6 +148,8 @@ MinesweeperBoard::MinesweeperBoard(int width, int height, GameMode mode): height
          if (!board[x][y].hasMine) 
          {
             board[x][y].hasMine = true;
+            std::cout << "NUMBER OF MINES REM. TO PLACE: ";
+            std::cout << mines_num << std::endl;
             mines_num--;
          }
 
@@ -156,7 +158,7 @@ MinesweeperBoard::MinesweeperBoard(int width, int height, GameMode mode): height
    else
    std::cout << "DEBUG MODE, NO RANDOM MINES PLACEMENT" << std::endl;
    std::cout << "NUMBER OF MINES: ";
-   std::cout << mine_remaning << std::endl;
+   std::cout << mine_remaning - 1 << std::endl;
 
    // warunek while sprawdza czy pozostaly jakies miny w "magazynie"
    //wybiera losową pozycję z planszy 
@@ -306,26 +308,56 @@ void MinesweeperBoard::check_win()
    int width = getBoardWidth();
    int height = getBoardHeight();
 
-   for (int j = 0; j < height; j++) 
-   {
-      for (int i = 0; i < width; i++) 
-      {
-         if(board[i][j].hasMine == true && board[i][j].hasFlag == true)
-         {
-            mine_remaning = getMineCount(); - 1;
+   int all_mines_count = 0;
+   for (int i = 0; i < width; i++) {
+      for (int j = 0; j < height; j++) {
+         if (board[i][j].hasMine) {
+            all_mines_count++;
+        }
+    }
+   }
+   
 
-            if(mine_remaning = 0)
-            win(); 
+   int inactive_mines_count = 0;
+   for (int i = 0; i < width; i++) {
+      for (int j = 0; j < height; j++) {
+         if (board[i][j].hasMine && board[i][j].hasFlag) {
+            inactive_mines_count++;
+        }
+    }
+   }
+
+
+   int revealed_fields = 0;
+   for (int i = 0; i < width; i++) 
+   {
+      for (int j = 0; j < height; j++) 
+      {
+         if (board[i][j].isRevealed || board[i][j].hasMine) 
+         {
+            revealed_fields++;
          }
       }
    }
 
-   if(current_game_mode == DEBUG)
+   int all_fields = width * height;
+
+   std::cout << "Zliczono nieaktywne miny " << std::endl;
+   std::cout << inactive_mines_count << std::endl;
+   std::cout << "Zliczono wszystkie miny " << std::endl;
+   std::cout << all_mines_count << std::endl;
+   std::cout << "Zliczono odkryte pola " << std::endl;
+   std::cout << revealed_fields << std::endl;
+   std::cout << "Zliczono wszystkie pola " << std::endl;
+   std::cout << all_fields << std::endl;
+
+   if(all_mines_count == inactive_mines_count && all_fields == revealed_fields)
    {
-      std::cout << "Zostalo min ";
-      std::cout << mine_remaning << std::endl;
+      win();
    }
-}
+
+
+} 
 
 void MinesweeperBoard::die()
 {
