@@ -5,18 +5,18 @@
 #include "MSBoardTextView.h"
 
 
+
 MSBoardTextView::MSBoardTextView(MinesweeperBoard &board) : board(board) {}
 
 
 
 void MSBoardTextView::text_display()
 {
-   
-   int width = board.getBoardWidth();
-   int height = board.getBoardHeight();
-     
-   
+   //change_detection = true;
 
+   if(change_detection == true)
+   {
+   
    std::cout << "   ";
    
    for (int i = 0; i < width; i++) 
@@ -49,5 +49,8 @@ void MSBoardTextView::text_display()
          std::cout << "]";
       }
       std::cout << std::endl;
+   }
+
+   change_detection = false;
    }
 }

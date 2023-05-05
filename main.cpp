@@ -1,7 +1,6 @@
 #include "MinesweeperBoard.h"
-//#include "MinesweeperBoard.cpp"
 #include "MSBoardTextView.h"
-//#include "MSBoardTextView.cpp"
+#include "MSTextController.h"
 
 int main() 
 {
