@@ -36,7 +36,7 @@ void MSBoardTextView::text_display()
       for (int j = 0; j < width; j++) 
       {
          std::cout << "[";
-         if (board.board[i][j].hasMine == true && board.board[i][j].isRevealed == false)
+         if (board.board[i][j].hasMine == true && board.board[i][j].isRevealed == true)
             std::cout << "M";
          else
             std::cout << ".";
@@ -59,6 +59,10 @@ void MSBoardTextView::text_display()
 
 void MSBoardTextView::death_view()
 {
+   std::cout << std:: endl;
+   std::cout << std:: endl;
+   std::cout << "Rozlozenie min" << std:: endl;
+
    int width = board.getBoardWidth();
    int height = board.getBoardHeight();
    

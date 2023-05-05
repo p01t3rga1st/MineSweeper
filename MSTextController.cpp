@@ -10,10 +10,13 @@ MSTextController::MSTextController(MinesweeperBoard& board, MSBoardTextView& vie
 
 void MSTextController::play()
 {
+    std::cout << std:: endl;
+    std::cout << std:: endl;
+    std::cout << "SAPER wpisz koordynaty i dodaj flage r lub f (r - odkrycie, f - flaga)" << std::endl;
     while(board.getGameState() == RUNNING)
     {
-
-        std::cout << "Wpisz koordynaty np:x y aby onznaczyć flage wpisz po koordynatach 'f' jesli chcesz odkryc pole wpisz r" << std::endl;
+        
+        std::cout << "Koordynaty + r/f PRZYKLAD ( 0 0 r )" << std::endl;
         std::cin >> y;
         std::cin >> x;
         std::cin >> flag;

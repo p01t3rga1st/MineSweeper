@@ -63,8 +63,7 @@ void MinesweeperBoard::clearBoard(int width, int height)
          board[i][j].hasFlag = false;
       }
    }
-   std::cout << "clearBoard DEBUG " << getBoardWidth() << std::endl;
-   std::cout << "clearBoard DEBUG " << getBoardHeight() << std::endl;
+   
 }
 
 MinesweeperBoard::MinesweeperBoard(int width, int height, GameMode mode): height(height) 
@@ -148,17 +147,14 @@ MinesweeperBoard::MinesweeperBoard(int width, int height, GameMode mode): height
          if (!board[x][y].hasMine) 
          {
             board[x][y].hasMine = true;
-            std::cout << "NUMBER OF MINES REM. TO PLACE: ";
-            std::cout << mines_num << std::endl;
             mines_num--;
          }
 
       }
    }
    else
-   std::cout << "DEBUG MODE, NO RANDOM MINES PLACEMENT" << std::endl;
-   std::cout << "NUMBER OF MINES: ";
-   std::cout << mine_remaning - 1 << std::endl;
+   
+   
 
    // warunek while sprawdza czy pozostaly jakies miny w "magazynie"
    //wybiera losową pozycję z planszy 
@@ -166,8 +162,7 @@ MinesweeperBoard::MinesweeperBoard(int width, int height, GameMode mode): height
    //w if znajduje sie zmiana atrubutu hasmine na 1
    // odejmujemy bombe bo juz ja uzylismy dekrementacja
 
-   std::cout << "MinesweeperBoard DEBUG " << getBoardWidth() << std::endl;
-   std::cout << "MinesweeperBoard DEBUG " << getBoardHeight() << std::endl;
+   
    return;
 }
 
@@ -341,7 +336,7 @@ void MinesweeperBoard::check_win()
    }
 
    int all_fields = width * height;
-
+   /*
    std::cout << "Zliczono nieaktywne miny " << std::endl;
    std::cout << inactive_mines_count << std::endl;
    std::cout << "Zliczono wszystkie miny " << std::endl;
@@ -350,7 +345,7 @@ void MinesweeperBoard::check_win()
    std::cout << revealed_fields << std::endl;
    std::cout << "Zliczono wszystkie pola " << std::endl;
    std::cout << all_fields << std::endl;
-
+   */
    if(all_mines_count == inactive_mines_count && all_fields == revealed_fields)
    {
       win();
