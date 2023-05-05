@@ -1,6 +1,7 @@
 #ifndef MSTEXTCONTROLLER_H
 #define MSTEXTCONTROLLER_H
-
+#include "MinesweeperBoard.h"
+#include "MSBoardTextView.h"
 
 class MSTextController
 {
