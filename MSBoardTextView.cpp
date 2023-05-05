@@ -14,6 +14,9 @@ void MSBoardTextView::text_display()
 {
    //change_detection = true;
 
+   int width = board.getBoardWidth();
+    int height = board.getBoardHeight();
+
    if(change_detection == true)
    {
    
@@ -46,7 +49,7 @@ void MSBoardTextView::text_display()
             std::cout << "f";
          else
             std::cout << ".";
-         std::cout << "]";
+            std::cout << "]";
       }
       std::cout << std::endl;
    }

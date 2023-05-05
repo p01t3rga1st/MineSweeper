@@ -9,9 +9,9 @@ int main()
     MSBoardTextView view(board);
     view.text_display();
 
-    //MSTextController(board, view);
+    MSTextController ctrl(board, view);
 
-    //ctrl.play();
+    ctrl.play();
     
       
 };
