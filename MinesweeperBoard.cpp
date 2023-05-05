@@ -52,63 +52,6 @@ void MinesweeperBoard::debug_display() const
    }
 }
 
-/*
-void debug_play() 
-{
-   
-
-   int menu_gamemode;
-   int menu_height;
-   int menu_width;
-
-   std::cout << "LESS THAN 100! Height:" << std::endl;
-   std::cin >> menu_height;
-
-   std::cout << "LESS THAN 100! Width:" << std::endl;
-   std::cin >> menu_width;
-
-   std::cout << std::endl;
-   std::cout << std::endl;
-   std::cout << std::endl;
-
-   std::cout << "Gamemode:" << std::endl;
-   std::cout << "Easy: '1'" << std::endl;
-   std::cout << "Normal: '2'" << std::endl;
-   std::cout << "Hard: '3'" << std::endl;
-   std::cout << "Debug: '4'" << std::endl;
-
-   std::cin >> menu_gamemode;
-
-   
-
-
-   switch(menu_gamemode)
-   {
-      case 1:
-      {
-         MinesweeperBoard board(menu_width, menu_height, EASY);
-      }
-         break;
-      case 2:
-      {
-         MinesweeperBoard board(menu_width, menu_height, NORMAL);
-      }   
-         break;
-      case 3:
-      {
-         MinesweeperBoard board(menu_width, menu_height, HARD);
-      }
-         break;
-      case 4:
-      {
-         MinesweeperBoard board(menu_width, menu_height, DEBUG);
-      }
-         break;
-   }
-
-} */
-
-
 void MinesweeperBoard::clearBoard(int width, int height) 
 {
    for (int i = 0; i < width; i++) 
@@ -405,13 +348,4 @@ void MinesweeperBoard::revealField(int row, int col)
          }
       }
    }
-
-   
-
-   // try to reveal the field at (row,col)
-  //
-  // If the field was not revealed and there is no mine on it - reveal it
-  // If the field was not revealed and there is a mine on it:  
-  // - if its the first player action - move mine to another location, reveal field (not in DEBUG mode!)
-  // - reveal it and finish game
 }

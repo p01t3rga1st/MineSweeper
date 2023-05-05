@@ -14,6 +14,7 @@ enum GameState {RUNNING, FINISHED_WIN, FINISHED_LOSS};
 void debug_play();
 
 
+
 class MinesweeperBoard 
 {
     int mines_num = 0;
@@ -26,7 +27,7 @@ class MinesweeperBoard
     bool isRevealed(int row, int col) const;
     
 
-public:
+    public:
 
     void clearBoard(int width, int height);
     void debug_display() const;
