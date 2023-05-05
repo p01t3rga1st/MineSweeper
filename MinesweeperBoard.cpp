@@ -86,22 +86,28 @@ MinesweeperBoard::MinesweeperBoard(int width, int height, GameMode mode): height
    {
     case EASY:
       mines_num = width * height * 0.1;
+      mine_remaning = mines_num;
       break;
     case NORMAL:
       mines_num = width * height * 0.2;
+      mine_remaning = mines_num;
       break;
     case HARD:
       mines_num = width * height * 0.3;
+      mine_remaning = mines_num;
       break;
     case DEBUG:
-      mines_num = width * height * 0.3;
+      
 
       int x = 0;
       int y = 0;
 
+      
+
       for (x = 0; x < width; x++) 
       {
          board[0][x].hasMine = true;
+         mines_num ++;
       }
 
       // zapelanianie pierwszego rzedu bobmami
@@ -111,6 +117,7 @@ MinesweeperBoard::MinesweeperBoard(int width, int height, GameMode mode): height
          if (y % 2 == 0) 
          {
             board[y][0].hasMine = true;
+            mines_num ++;
          }
       }
 
@@ -120,9 +127,13 @@ MinesweeperBoard::MinesweeperBoard(int width, int height, GameMode mode): height
          for (int i = 0; i < height; i++) 
          {
             board[i][i].hasMine = true;
+            mines_num ++;
          }
 
       // zapelnanie bombami po skosie 
+
+      mines_num = mines_num -2;
+      
 
       break;
 
@@ -144,6 +155,8 @@ MinesweeperBoard::MinesweeperBoard(int width, int height, GameMode mode): height
    }
    else
    std::cout << "DEBUG MODE, NO RANDOM MINES PLACEMENT" << std::endl;
+   std::cout << "NUMBER OF MINES: ";
+   std::cout << mine_remaning << std::endl;
 
    // warunek while sprawdza czy pozostaly jakies miny w "magazynie"
    //wybiera losową pozycję z planszy 
@@ -288,11 +301,43 @@ char MinesweeperBoard::getFieldInfo(int row, int col) const
    return countMines(row, col);
 }
 
+void MinesweeperBoard::check_win()
+{
+   int width = getBoardWidth();
+   int height = getBoardHeight();
+
+   for (int j = 0; j < height; j++) 
+   {
+      for (int i = 0; i < width; i++) 
+      {
+         if(board[i][j].hasMine == true && board[i][j].hasFlag == true)
+         {
+            mine_remaning = getMineCount(); - 1;
+
+            if(mine_remaning = 0)
+            win(); 
+         }
+      }
+   }
+
+   if(current_game_mode == DEBUG)
+   {
+      std::cout << "Zostalo min ";
+      std::cout << mine_remaning << std::endl;
+   }
+}
+
 void MinesweeperBoard::die()
 {
    MSBoardTextView death_view();
    
    current_game_state = FINISHED_LOSS;
+   return;
+}
+
+void MinesweeperBoard::win()
+{
+   current_game_state = FINISHED_WIN;
    return;
 }
 

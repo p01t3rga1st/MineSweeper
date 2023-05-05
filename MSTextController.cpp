@@ -24,6 +24,7 @@ void MSTextController::play()
         board.revealField(x,y);
 
         view.text_display();
+        board.check_win();
 
     }
 

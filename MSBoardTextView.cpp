@@ -36,7 +36,7 @@ void MSBoardTextView::text_display()
       for (int j = 0; j < width; j++) 
       {
          std::cout << "[";
-         if (board.board[i][j].hasMine == true && board.board[i][j].isRevealed == true)
+         if (board.board[i][j].hasMine == true && board.board[i][j].isRevealed == false)
             std::cout << "M";
          else
             std::cout << ".";

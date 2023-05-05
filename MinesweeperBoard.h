@@ -25,6 +25,7 @@ class MinesweeperBoard
     int height;
     bool hasFlag(int row, int col) const;
     bool isRevealed(int row, int col) const;
+    int mine_remaning;
     
 
     public:
@@ -42,6 +43,8 @@ class MinesweeperBoard
     char getFieldInfo(int row, int col) const; 
     bool alreadyMoved;
     void die();
+    void win();
+    void check_win();
 
 };
 #endif //MINESWEEPERBOARD_H
