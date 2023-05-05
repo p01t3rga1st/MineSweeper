@@ -2,7 +2,7 @@
 #include <cstdlib>
 #include <string>
 #include "MinesweeperBoard.h"
-
+#include "MSBoardTextView.h"
 
 void MinesweeperBoard::debug_display() const 
 {
@@ -72,6 +72,8 @@ MinesweeperBoard::MinesweeperBoard(int width, int height, GameMode mode): height
 
    //std::cout<< height << std::endl;
    //std::cout<< width << std::endl;
+
+   
 
   this->width = width;
    
@@ -288,7 +290,10 @@ char MinesweeperBoard::getFieldInfo(int row, int col) const
 
 void MinesweeperBoard::die()
 {
+   MSBoardTextView death_view();
+   
    current_game_state = FINISHED_LOSS;
+   return;
 }
 
 int MinesweeperBoard::getGameState() const 
@@ -331,7 +336,6 @@ void MinesweeperBoard::revealField(int row, int col)
       if(alreadyMoved == true || current_game_mode == DEBUG)
       {
          die();
-         std::cout << "You died" << std::endl;
       }
       else
       {
