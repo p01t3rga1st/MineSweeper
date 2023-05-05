@@ -2,6 +2,7 @@
 bin/
 obj/
 .vs/
+.vscode
 
 # Ignoruj pliki projektu Visual Studio
 *.sln
@@ -41,3 +42,8 @@ _ReSharper*/
 # Ignoruj piki makefile
 
 *.o
+
+
+# Ignoruj build make'a
+
+saper

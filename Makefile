@@ -1,14 +1,15 @@
 CC = g++
 CFLAGS = -Wall -g
+LFLAGS = -lsfml-graphics -lsfml-window -lsfml-system
 
-SRCS = main.cpp MinesweeperBoard.cpp
+SRCS = main.cpp
 OBJS = $(SRCS:.cpp=.o)
 EXEC = saper
 
 all: $(EXEC)
 
 $(EXEC): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -o $(EXEC)
+	$(CC) $(CFLAGS) $(OBJS) $(LFLAGS) -o $(EXEC)
 
 main.o: main.cpp MinesweeperBoard.h
 	$(CC) $(CFLAGS) -c main.cpp
