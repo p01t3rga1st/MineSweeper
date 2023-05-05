@@ -72,6 +72,8 @@ MinesweeperBoard::MinesweeperBoard(int width, int height, GameMode mode): height
    //std::cout<< height << std::endl;
    //std::cout<< width << std::endl;
 
+   // reset ziarna RNG
+   srand(time(NULL));
    
 
   this->width = width;

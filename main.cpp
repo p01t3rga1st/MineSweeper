@@ -5,7 +5,7 @@
 int main() 
 {   
     
-    MinesweeperBoard board(6, 3, EASY);
+    MinesweeperBoard board(10, 10, EASY);
     MSBoardTextView view(board);
     view.text_display();
 
