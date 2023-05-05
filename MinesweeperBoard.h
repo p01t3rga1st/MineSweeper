@@ -20,7 +20,7 @@ class MinesweeperBoard
     int mines_num = 0;
     GameState current_game_state;
     GameMode current_game_mode;
-    Field board[100][100];
+    
     int width;
     int height;
     bool hasFlag(int row, int col) const;
@@ -28,7 +28,7 @@ class MinesweeperBoard
     
 
     public:
-    
+    Field board[100][100];
     void clearBoard(int width, int height);
     void debug_display() const;
     MinesweeperBoard(int width, int height, GameMode mode);

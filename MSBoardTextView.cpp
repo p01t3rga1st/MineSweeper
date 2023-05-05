@@ -14,11 +14,10 @@ void MSBoardTextView::text_display()
    
    int width = board.getBoardWidth();
    int height = board.getBoardHeight();
-   this->board = board;
-   
+     
    
 
-   std::cout << "  ";
+   std::cout << "   ";
    
    for (int i = 0; i < width; i++) 
    {
@@ -28,19 +27,22 @@ void MSBoardTextView::text_display()
 
    for (int i = 0; i < height; i++) 
    {
+      if(i<10)
+      std::cout << i << "  ";
+      else
       std::cout << i << " ";
       for (int j = 0; j < width; j++) 
       {
          std::cout << "[";
-         if (board[i][j].hasMine == true && board[i][j].isRevealed == true)
+         if (board.board[i][j].hasMine == true && board.board[i][j].isRevealed == true)
             std::cout << "M";
          else
             std::cout << ".";
-         if (board[i][j].isRevealed == true && board[i][j].hasMine == false)
+         if (board.board[i][j].isRevealed == true && board.board[i][j].hasMine == false)
             std::cout << "o";
          else
             std::cout << ".";
-         if (board[i][j].hasFlag == true)
+         if (board.board[i][j].hasFlag == true)
             std::cout << "f";
          else
             std::cout << ".";
