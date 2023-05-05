@@ -12,13 +12,12 @@ MSBoardTextView::MSBoardTextView(MinesweeperBoard &board) : board(board) {}
 
 void MSBoardTextView::text_display()
 {
-   //change_detection = true;
+   
 
    int width = board.getBoardWidth();
-    int height = board.getBoardHeight();
+   int height = board.getBoardHeight();
 
-   if(change_detection == true)
-   {
+   
    
    std::cout << "   ";
    
@@ -42,7 +41,7 @@ void MSBoardTextView::text_display()
          else
             std::cout << ".";
          if (board.board[i][j].isRevealed == true && board.board[i][j].hasMine == false)
-            std::cout << "o";
+            std::cout << board.countMines(i,j);
          else
             std::cout << ".";
          if (board.board[i][j].hasFlag == true)
@@ -54,6 +53,54 @@ void MSBoardTextView::text_display()
       std::cout << std::endl;
    }
 
-   change_detection = false;
+   
+   
+}
+
+void MSBoardTextView::death_view()
+{
+   int width = board.getBoardWidth();
+   int height = board.getBoardHeight();
+   
+
+   for (int j = 0; j < height; j++) 
+   {
+      for (int i = 0; i < width; i++) 
+      {
+         //std::cout << i << j << std::endl;
+         board.revealField(j,i);
+      }
+   }
+
+   for (int i = 0; i < width; i++) 
+   {
+      std::cout << "  " << i << "  ";
+   }
+   std::cout << std::endl;
+
+   for (int i = 0; i < height; i++) 
+   {
+      if(i<10)
+      std::cout << i << "  ";
+      else
+      std::cout << i << " ";
+      for (int j = 0; j < width; j++) 
+      {
+         std::cout << "[";
+         if (board.board[i][j].hasMine == true)
+            std::cout << "M";
+         else
+            std::cout << ".";
+         if (board.board[i][j].isRevealed == true && board.board[i][j].hasMine == false)
+            std::cout << "o";
+         else
+            std::cout << ".";
+         if (board.board[i][j].hasFlag == true)
+            std::cout << "f";
+         else
+            std::cout << ".";
+         std::cout << "]";
+      }
+      std::cout << std::endl;
    }
 }

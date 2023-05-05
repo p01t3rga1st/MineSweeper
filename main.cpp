@@ -3,7 +3,7 @@
 #include "MSTextController.h"
 
 int main() 
-{
+{   
     
     MinesweeperBoard board(10, 20, DEBUG);
     MSBoardTextView view(board);

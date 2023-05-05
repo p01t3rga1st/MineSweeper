@@ -10,44 +10,26 @@ MSTextController::MSTextController(MinesweeperBoard& board, MSBoardTextView& vie
 
 void MSTextController::play()
 {
-    std::cout << "Wybierz tryb gry:" << std::endl;
-    std::cout << "EASY - 1" << std::endl;
-    std::cout << "NORMAL - 2" << std::endl;
-    std::cout << "HARD - 3" << std::endl;
-    std::cout << "WYJSCIE - 4" << std::endl;
-    std::cout << "DEBUG - 0" << std::endl;
-    std::cin >> gamemode;
+    while(board.getGameState() == RUNNING)
+    {
 
-    std::cout << "Wybierz wysokosc planszy" << std::endl;
-    std::cin >> y;
+        std::cout << "Wpisz koordynaty np:x y aby onznaczyć flage wpisz po koordynatach 'f' jesli chcesz odkryc pole wpisz r" << std::endl;
+        std::cin >> y;
+        std::cin >> x;
+        std::cin >> flag;
 
-    std::cout << "Wybierz szerokosc planszy" << std::endl;
-    std::cin >> x;
+        if(flag == 'f')
+        board.toggleFlag(x,y);
+        else if(flag == 'r')
+        board.revealField(x,y);
 
+        view.text_display();
 
-    if (gamemode == 0) 
-    {
-        MinesweeperBoard board(x, y, DEBUG);
-    }
-    else if (gamemode == 1) 
-    {
-        MinesweeperBoard board(x, y, EASY);
-    }
-    else if (gamemode == 2) 
-    {
-        MinesweeperBoard board(x, y, NORMAL);
-    }
-    else if (gamemode == 3) 
-    {
-        MinesweeperBoard board(x, y, HARD);
-    }
-    else if (gamemode == 4) 
-    {
-        exit(0);
     }
 
+    view.death_view();
 
-    
+
 }
 
 

@@ -14,7 +14,7 @@ class MSBoardTextView
     public:
     MSBoardTextView(MinesweeperBoard &board);
     void text_display();
-    bool change_detection;
+    void death_view();
     int height;
     int width;
     

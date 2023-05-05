@@ -8,13 +8,16 @@ class MSTextController
     public:
     MSTextController(MinesweeperBoard& board, MSBoardTextView& view);
     int gamemode;
-    
-    void play();
-    private:
-    MinesweeperBoard &board;
-    MSBoardTextView &view;
     int x;
     int y;
+    char flag;
+    void play();
+
+    private:
+    bool change_detection;
+    MinesweeperBoard &board;
+    MSBoardTextView &view;
+    
 };
 
 
