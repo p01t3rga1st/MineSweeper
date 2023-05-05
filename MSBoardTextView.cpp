@@ -14,7 +14,7 @@ void MSBoardTextView::text_display()
    
    int width = board.getBoardWidth();
    int height = board.getBoardHeight();
-   
+   this->board = board;
    
    
 

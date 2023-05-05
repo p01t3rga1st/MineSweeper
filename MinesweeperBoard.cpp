@@ -10,6 +10,7 @@ void MinesweeperBoard::debug_display() const
 
    int width = getBoardWidth();
    int height = getBoardHeight();
+   
 
    if (height > 100 || width > 100) 
    {

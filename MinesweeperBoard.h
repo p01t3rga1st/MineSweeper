@@ -28,7 +28,7 @@ class MinesweeperBoard
     
 
     public:
-
+    
     void clearBoard(int width, int height);
     void debug_display() const;
     MinesweeperBoard(int width, int height, GameMode mode);
