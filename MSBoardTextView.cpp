@@ -3,7 +3,8 @@
 #include <string>
 #include "MinesweeperBoard.h"
 #include "MSBoardTextView.h"
-
+#include "MSSFMLView.h"
+#include "MSSFMLController.h"
 
 
 MSBoardTextView::MSBoardTextView(MinesweeperBoard &board) : board(board) {}

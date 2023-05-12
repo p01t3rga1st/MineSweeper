@@ -26,13 +26,14 @@ class MinesweeperBoard
     bool hasFlag(int row, int col) const;
     bool isRevealed(int row, int col) const;
     int mine_remaning;
+    void clearBoard(int width, int height);
+    void debug_display() const;
+    bool alreadyMoved;
     
 
     public:
-    Field board[100][100];
-    void clearBoard(int width, int height);
-    void debug_display() const;
     MinesweeperBoard(int width, int height, GameMode mode);
+    Field board[100][100];
     int getBoardWidth() const;
     int getBoardHeight() const;
     int getMineCount() const;
@@ -41,7 +42,6 @@ class MinesweeperBoard
     int getGameState() const;
     int countMines(int row, int col) const;
     char getFieldInfo(int row, int col) const; 
-    bool alreadyMoved;
     void die();
     void win();
     void check_win();

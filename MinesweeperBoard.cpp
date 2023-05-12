@@ -3,6 +3,11 @@
 #include <string>
 #include "MinesweeperBoard.h"
 #include "MSBoardTextView.h"
+#include "MSBoardTextView.h"
+#include "MSSFMLView.h"
+#include "MSSFMLController.h"
+
+
 
 void MinesweeperBoard::debug_display() const 
 {
@@ -69,10 +74,7 @@ void MinesweeperBoard::clearBoard(int width, int height)
 MinesweeperBoard::MinesweeperBoard(int width, int height, GameMode mode): height(height) 
 {
 
-   //std::cout<< height << std::endl;
-   //std::cout<< width << std::endl;
-
-   // reset ziarna RNG
+   // reset ziarna RNG przy pomocy RTC w komputerze
    srand(time(NULL));
    
 
@@ -87,15 +89,15 @@ MinesweeperBoard::MinesweeperBoard(int width, int height, GameMode mode): height
    {
     case EASY:
       mines_num = width * height * 0.1;
-      mine_remaning = mines_num;
+      
       break;
     case NORMAL:
       mines_num = width * height * 0.2;
-      mine_remaning = mines_num;
+      
       break;
     case HARD:
       mines_num = width * height * 0.3;
-      mine_remaning = mines_num;
+      
       break;
     case DEBUG:
       
@@ -133,7 +135,7 @@ MinesweeperBoard::MinesweeperBoard(int width, int height, GameMode mode): height
 
       // zapelnanie bombami po skosie 
 
-      mines_num = mines_num -2;
+      
       
 
       break;
@@ -359,7 +361,6 @@ void MinesweeperBoard::check_win()
 void MinesweeperBoard::die()
 {
    MSBoardTextView death_view();
-   
    current_game_state = FINISHED_LOSS;
    return;
 }

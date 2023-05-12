@@ -5,3 +5,7 @@
 - Ogromnie pomocne tutoriale od dev teamu SFML https://www.sfml-dev.org/tutorials/2.5/
 
 - Pan ktory pomogl mi w naprawieniu makefile https://www.youtube.com/watch?v=5aWMIpRiuww
+
+- Pomysly https://www.youtube.com/watch?v=myGrhTNUAPY&t=30s
+
+- Playlista z poradnikiem do SFML https://www.youtube.com/playlist?list=PLk6mhiZKpyW4KRTZc8sc0aYOLFmTSLA7r
